@@ -35,6 +35,6 @@ private IEnumerator show() {
 
 Wishlist:
 
-Extend all the interpolators to work on `VectorN` classes, Quaternions.
-Support custom curves, or a component to configure more complex curves in the editor, or some editor extensions for including configurable curves as fields on classes.
+- Extend all the interpolators to work on `VectorN` classes, Quaternions.
+- Support custom curves, or a component to configure more complex curves in the editor, or some editor extensions for including configurable curves as fields on classes.
 
