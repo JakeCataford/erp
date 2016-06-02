@@ -1,21 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Erp {
-	public class Erp {
-		public enum InterpolationFunctions {
-			EaseIn
-		}
+public static class Erp {
+		public delegate void OnTweenFrame(float value);
 
+	public static float Interpolate(Interpolator.Type type, float a, float b, float pct) {
+		Interpolator i = new Interpolator(type);
+		return i.GetValue(a, b, pct);
+	}
 
-		public static void Interpolate(float a, float b, float pct) {
+	public static float MoveTowards(this float a, float b, float dampen) {
+		return Interpolate(Interpolator.Type.Linear, a, b, dampen); 
+	}
 
-		}
+	public static IEnumerator Tween(Interpolator.Type type, float start, float end, float duration, OnTweenFrame callback) {
+		float elapsed = 0;
 
-		private static IInterpolator getInterpolator(InterpolationFunctions function) {
-			switch (function) {
-			case InterpolationFunctions.
-			}
+		while(elapsed < duration) {
+			float value = Interpolate(type, start, end, elapsed/duration);
+			callback(value);
+			elapsed += Time.deltaTime;
+			yield return null;
 		}
 	}
 }
