@@ -23,4 +23,15 @@ public static class Erp {
 			yield return null;
 		}
 	}
+
+	public static IEnumerator TweenUnscaled(Interpolator.Type type, float start, float end, float duration, OnTweenFrame callback) {
+		float elapsed = 0;
+
+		while(elapsed < duration) {
+			float value = Interpolate(type, start, end, elapsed/duration);
+			callback(value);
+			elapsed += Time.unscaledDeltaTime;
+			yield return null;
+		}
+	}
 }
